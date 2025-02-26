@@ -24,24 +24,25 @@
 <% end %>
 
 
-<h1>Book detail</h1>
-<% @books.each do |book| %>
-<table>
-  <tbody>
-    <tr>
-      <th>
-        <%= image_tag book.user.get_profile_image(100,100) %><br>
-        <%= book.user.name %>
-      </th>
-      <th><%= book.title %></th>
-      <th><%= book.body %></th>
-      <th><%= link_to "Edit", book_path(book.id) %></th>
-      <th>
-        <%= link_to "Destroy", book_path(book.id), method: :delete, "deta-confirm" => "本当に消しますか？" %>
-      </th>
-    </tr>
-  </tbody>
-</table>
+<% if false %>
+
+  # <h1>Book detail</h1>
+  # <% @books.each do |book| %>
+  # <table>
+  #   <tbody>
+  #     <tr>
+  #       <th>
+  #         <%= image_tag book.user.get_profile_image(100,100) %><br>
+  #         <%= book.user.name %>
+  #       </th>
+  #       <th><%= book.title %></th>
+  #       <th><%= book.body %></th>
+  #       <th><%= link_to "Edit", book_path(book.id) %></th>
+  #       <th>
+  #         <%= link_to "Destroy", book_path(book.id), method: :delete, "deta-confirm" => "本当に消しますか？" %>
+  #       </th>
+  #     </tr>
+  #   </tbody>
+  # </table>
+  # <% end %>
 <% end %>
-
-
