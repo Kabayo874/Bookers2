@@ -1,0 +1,24 @@
+<%= render 'layouts/list', user: @user, book: @book %>
+
+<h1>Books</h1>
+<% @books.each do |book| %>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        <%= image_tag book.user.get_profile_image(100,100) %>
+      </th>
+      <th><%= link_to book.title, book_path(book.id) %></th>
+      <th><%=  book.body %></th>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<% end %>

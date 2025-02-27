@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
 
-  def new
-    @book = Book.new
-    @user = User.find(params[:current_user_id])
-    @user_images = @user.books
-  end
+  # def new
+  #   @book = Book.new
+  #   @user = User.find(params[:current_user_id])
+  #   @user_images = @user.books
+  # end
 
   def create
     @book = Book.new(book_params)
@@ -13,9 +13,11 @@ class BooksController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
-  # def index
-    # @books = Book.all
-  # end
+  def index
+    @books = Book.all
+    @user = current_user
+    @book = Book.new
+  end
 
   def show
     @book = Book.find(params[:id])

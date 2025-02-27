@@ -1,28 +1,4 @@
-<h1>User info</h1>
-<%= image_tag @user.get_profile_image(100,100) %>
-<table>
-  <tbody>
-    <tr>
-      <th>name</th>
-      <th><%= @user.name %></th>
-    </tr>
-    <tr>
-      <th>introduction</th>
-      <th><%= @user.introduction %></th>
-    </tr>
-  </tbody>
-</table>
-
-
-<h1>New book</h1>
-<%= form_with model: @book do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
-
+<%= render 'layouts/list', user: @user, book: @book %>
 
 
 
@@ -34,7 +10,7 @@
         <%= image_tag @book.user.get_profile_image(100,100) %><br>
         <%= link_to @book.user.name, book_path(@book.id) %>
       </th>
-      <th><%= @book.title %></th>
+      <th><%= link_to @book.title, book_path(@book.id) %></th>
       <th><%= @book.body %></th>
       <% if @book.user == current_user %>
         <th><%= link_to "Edit", book_path(@book.id) %></th>
