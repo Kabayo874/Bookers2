@@ -1,10 +1,5 @@
 class BooksController < ApplicationController
 
-  # def new
-  #   @book = Book.new
-  #   @user = User.find(params[:current_user_id])
-  #   @user_images = @user.books
-  # end
 
   def create
     @book = Book.new(book_params)
