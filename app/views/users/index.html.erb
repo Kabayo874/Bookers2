@@ -3,7 +3,7 @@
 
 
 <h1>Users</h1>
-<% @users.each do |user| %>
+
 <table>
   <thead>
     <tr>
@@ -13,6 +13,7 @@
     </tr>
   </thead>
   <tbody>
+    <% @users.each do |user| %>
     <tr>
       <th>
         <%= image_tag user.get_profile_image(100,100) %>
@@ -21,6 +22,8 @@
       <th><%= link_to "Show", user_path(user.id) %></th>
       </th>
     </tr>
+    <% end %>
   </tbody>
 </table>
-<% end %>
+
+<%= paginate @users %>
