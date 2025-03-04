@@ -1,3 +1,5 @@
+
+
 <h2>User info</h2>
 <%= image_tag user.get_profile_image(100,100) %>
 <table class="table">
@@ -15,13 +17,13 @@
 
 <!-- userの編集権限を自分だけにする -->
 <% if @user == current_user %>
-  <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+  <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fa-solid fa-user-gear"></i>
   <% end %>
 <% else %>
-  <%= link_to user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+  <%= link_to user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fa-solid fa-user-gear"></i>
-<% end %>
+  <% end %>
 <% end %>
 
 

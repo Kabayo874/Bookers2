@@ -4,14 +4,19 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to user_path(current_user.id)
+    if @book.save
+      redirect_to user_path(current_user.id)
+    else
+      @books = Book.page(params[:page])
+      @user = current_user
+      render :index
+    end
   end
 
   def index
     @books = Book.page(params[:page])
-    @user = current_user
     @book = Book.new
+    @user = current_user
   end
 
   def show
