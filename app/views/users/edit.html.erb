@@ -1,25 +1,33 @@
-<h1>User info</h1>
+<div class="container d-flex flex-column">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
+      <h2>User info</h2>
 
-<%= form_with model: @user do |f| %>
-  <div>
-    <label for="name">Name</label>
+      <div>
+        <%= form_with model: @user do |f| %>
+        <div>
+          <label for="name">Name</label>
+        </div>
+        <div>
+          <%= f.text_field :name, autofocus: true, id: "name", placeholder:"名前", class: "form-control" %>
+        </div>
+        <div class="pt-3">
+          <label for="image">Image</label>
+        </div>
+        <div>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像",id:"image", accept: "image/*" %>
+        </div>
+        <div class="pt-3">
+          <label for="introduction">Introduction</label>
+        </div>
+        <div>
+          <%= f.text_area :introduction, autofocus: true, id: "introduction", placeholder: "自己紹介", class: "form-control" %>
+        </div>
+        <div class="pt-3">
+          <%= f.submit "Update User", class: "btn btn-secondary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.text_field :name, autofocus: true, id: "name", placeholder:"名前" %>
-  </div>
-  <div>
-    <label for="image">Image</label>
-  </div>
-  <div>
-    <%= f.file_field :profile_image, placeholder: "プロフィール画像",id:"image", accept: "image/*" %>
-  </div>
-  <div>
-    <label for="introduction">Introduction</label>
-  </div>
-  <div>
-    <%= f.text_area :introduction, autofocus: true, id: "introduction", placeholder: "自己紹介" %>
-  </div>
-  <div>
-    <%= f.submit "Update User" %>
-  </div>
-<% end %>
+</div>
