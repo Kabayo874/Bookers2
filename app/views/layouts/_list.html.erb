@@ -1,4 +1,4 @@
-<h1>User info</h1>
+<h2>User info</h2>
 <%= image_tag user.get_profile_image(100,100) %>
 <table class="table">
   <tbody>
@@ -12,13 +12,20 @@
     </tr>
   </tbody>
 </table>
-<%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
-  <i class="fa-solid fa-user-gear"></i>
-<% end %>
+
 <!-- userの編集権限を自分だけにする -->
+<% if @user == current_user %>
+  <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear"></i>
+  <% end %>
+<% else %>
+  <%= link_to user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear"></i>
+<% end %>
+<% end %>
 
 
-<h1 class="pt-4">New book</h1>
+<h2 class="pt-4">New book</h2>
 <%= form_with model: book do |f| %>
   <div>
     <label for="title">Title</label>
