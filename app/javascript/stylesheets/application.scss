@@ -1,1 +1,9 @@
 @use '~bootstrap/scss/bootstrap';
+
+.navbar-inverse .navbar-toggle {
+  border-color: white;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: white;
+}

@@ -6,49 +6,69 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <script src="https://kit.fontawesome.com/b033198601.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b033198601.js?date=20250302" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="d-flex flex-column vh-100">
 
-    <header class="bg-dark text-white">
+    <header class="bg-dark">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <p class="navbar-brand p-3"><%= link_to "Bookers", root_path %></p>
+          <p class="navbar-brand"><%= link_to "Bookers", root_path, class: 'text-white' %></p>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+
+            <!-- サインイン後 -->
             <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Home", new_user_session_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Users", users_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Books", books_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class: 'nav-link text-white' do %>
+                  <p><i class="fa-solid fa-house"></i> Home</p>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to users_path, class: 'nav-link text-white' do %>
+                  <p><i class="fa-solid fa-users"></i> User</p>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to books_path, class: 'nav-link text-white' do %>
+                  <p><i class="fa-solid fa-book-open"></i> Books</p>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white' do %>
+                  <p><i class="fa-solid fa-right-to-bracket"></i> Log out</p>
+                <% end %>
+              </li>
+
+              <!-- サインイン前 -->
             <% else %>
-            <li class="nav-item">
-              <%= link_to "Home", root_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "About", about_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log in", new_user_session_path, class: 'nav-link text-white' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to root_path, class: 'nav-link text-white' do %>
+                  <p><i class="fa-solid fa-house"></i> Home</p>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to about_path, class: 'nav-link text-white' do %>
+                  <p><i class="fa-solid fa-link"></i> About</p>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_registration_path, class: 'nav-link text-white' do %>
+                <p><i class="fa-solid fa-user-plus"></i> Sign up</p>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class: 'nav-link text-white' do %>
+                  <p><i class="fa-solid fa-right-to-bracket"></i> Log in</p>
+                <% end %>
+              </li>
             <% end %>
           </ul>
         </div>
@@ -56,19 +76,19 @@
           
     </header>
 
-    <main class="mb-auto">
-    <%= yield %>
-    </main>
+    <main class="mb-auto p-3">
+      <%= yield %>
 
-    <footer class="pt-5 pd-4">
-      <div class="container">
-        <div class="row">
-          <div class="text-center ">
-            <p>CopyRight Infratop.inc</p>
+      <footer class="pt-5 pd-4">
+        <div class="container d-flex justify-content-center ">
+          <div class="row">
+            <div class="text-center">
+              <p class="text-black">CopyRight Infratop.inc</p>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </main>
 
   </body>
 </html>
