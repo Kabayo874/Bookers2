@@ -1,18 +1,19 @@
 <div class="container">
   <div class="row d-flex flex-column">
-    <% if @book.errors.any? %>
+    <% if @new_book.errors.any? %>
       <div class="col">
-        <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
+        <h3><%= @new_book.errors.count %> errors prohibited this obj from being saved:</h3>
       </div>
       <div class="col">
         <ul>
-          <% @book.errors.full_messages.each do |message| %>
+          <% @new_book.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
       </div>
     <% end %>
   </div>
+
 
 
   <div class="row">
@@ -36,7 +37,7 @@
           <% @books.each do |book| %>
           <tr>
             <th>
-              <%= image_tag book.user.get_profile_image(80,80) %>
+              <%= link_to user_path(book.user_id) do %><%= image_tag book.user.get_profile_image(80,80) %><% end %>
             </th>
             <td class="text-break"><%= link_to book.title, book_path(book.id) %></td>
             <td class="text-break"><%= book.body %></td>
