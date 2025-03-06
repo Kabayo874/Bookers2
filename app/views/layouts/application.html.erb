@@ -78,6 +78,12 @@
     </header>
 
     <main class="mb-auto p-3">
+      <div>
+        <% flash.each do |message_type, message| %>
+          <%= content_tag :div, message, class: message_type %>
+        <% end %>
+      </div>
+
       <%= yield %>
 
       <footer class="pt-5 pd-4">
